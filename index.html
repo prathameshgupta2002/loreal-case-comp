@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoReal™ — Your scalp's glow-up starts here</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap');
+:root{
+  --ivory:#FAF8F5; --black:#111111; --nude:#F5E8DE; --rose:#D9B8A7;
+  --champagne:#EADDCB; --sage:#D7E4DD; --coral:#FF7D6A;
+  --ink:#1c1814; --muted:#9a9088; --line:rgba(17,17,17,.08);
+  --grad:linear-gradient(135deg,#F5E8DE 0%,#EADDCB 40%,#D9B8A7 100%);
+  --glass:rgba(255,255,255,.62); --glassbord:rgba(255,255,255,.75);
+  --shadow:0 20px 50px rgba(17,17,17,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;font-family:'Inter','Plus Jakarta Sans','SF Pro Display',system-ui,-apple-system,sans-serif}
+html,body{min-height:100%}
+body{
+  background:
+    radial-gradient(50% 40% at 88% 4%, rgba(215,228,221,.5) 0%, transparent 60%),
+    radial-gradient(50% 40% at 6% 96%, rgba(245,232,222,.65) 0%, transparent 60%),
+    var(--ivory);
+  color:var(--ink);padding:22px;overflow-x:hidden;position:relative;
+}
+#ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.amb{position:absolute;border-radius:50%;background:var(--grad);opacity:.13;filter:blur(1px);animation:float linear infinite}
+@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(16px,-38px)}100%{transform:translate(0,0)}}
+
+/* ===== BANNER ===== */
+.banner{position:relative;z-index:3;max-width:1500px;margin:0 auto 26px;background:var(--glass);backdrop-filter:blur(20px);
+  border:1px solid var(--glassbord);border-radius:26px;box-shadow:var(--shadow);
+  padding:15px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.banner .logo{width:46px;height:46px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#5a4636;font-weight:900;font-size:22px;box-shadow:0 8px 20px rgba(217,184,167,.45)}
+.banner .bt{line-height:1.1}
+.banner .bt h1.lmark{font-family:'Times New Roman',Georgia,serif;font-size:29px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:var(--black);line-height:1;position:relative}
+.banner .bt h1.lmark .ac{position:relative}
+.banner .bt h1.lmark .ac:after{content:"\00B4";position:absolute;top:-.62em;left:50%;transform:translateX(-58%);font-size:.62em;font-weight:700}
+.banner .bt small{font-size:9.5px;letter-spacing:2.5px;color:var(--muted);font-weight:700}
+.banner .tag{margin-left:6px;font-size:12.5px;font-weight:700;color:#6a533f;background:rgba(255,255,255,.55);border:1px solid var(--glassbord);border-radius:30px;padding:8px 15px}
+.banner .tag b{color:var(--coral)}
+.switch{margin-left:auto;display:flex;gap:6px;background:rgba(255,255,255,.5);border:1px solid var(--glassbord);border-radius:16px;padding:5px}
+.switch button{border:none;background:transparent;cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:800;color:var(--muted);padding:8px 13px;border-radius:12px;display:flex;align-items:center;gap:7px;transition:.2s}
+.switch button svg{opacity:.6}
+.switch button.on{background:var(--black);color:var(--ivory)}
+.switch button.on svg *{stroke:var(--ivory)}
+.switch button.on svg{opacity:1}
+
+/* ===== STAGE / COLUMNS ===== */
+.stage{position:relative;z-index:2;display:flex;gap:26px;justify-content:center;align-items:flex-start;max-width:1600px;margin:0 auto;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:16px}
+.framezone{display:flex;justify-content:center;flex:0 0 auto}
+body.mode-phone .col{flex:1 1 290px;max-width:370px;min-width:255px}
+body.mode-tablet .col{flex:1 1 230px;max-width:300px;min-width:215px}
+body.mode-desktop .framezone{flex:0 0 100%}
+body.mode-desktop .col{flex:1 1 100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:1120px;margin:0 auto}
+
+/* ===== INFO CARDS (INFOGRAPHICS) ===== */
+.icard{background:var(--glass);backdrop-filter:blur(18px);border:1px solid var(--glassbord);border-radius:24px;box-shadow:var(--shadow);padding:18px}
+.ieb{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:800;display:flex;align-items:center;gap:7px}
+.ieb:before{content:"";width:14px;height:2px;background:var(--rose);border-radius:2px}
+.kpi{font-size:44px;font-weight:900;letter-spacing:-1.5px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:8px 0 2px}
+.kpi small{font-size:15px;-webkit-text-fill-color:var(--muted);color:var(--muted)}
+.klabel{font-size:12px;color:#6f665e;font-weight:700}
+.idesc{font-size:11.5px;color:#726a62;line-height:1.5;margin-top:8px}
+.ref{color:var(--rose);font-weight:800;font-size:10px}
+.bar{margin-top:10px}
+.bar .bl{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:4px}
+.bar .bl .n{color:var(--black)}
+.track{height:9px;border-radius:9px;background:rgba(17,17,17,.07);overflow:hidden}
+.track i{display:block;height:100%;border-radius:9px;background:var(--grad);width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.track i.coral{background:linear-gradient(90deg,#FF9d8c,#FF7D6A)}
+.jtbd{margin-top:12px;background:var(--black);color:var(--ivory);border-radius:16px;padding:12px 14px;font-size:11.5px;font-weight:700}
+.jtbd b{color:var(--rose)}
+.irow{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line)}
+.irow:last-child{border:none}
+.irow .ii{width:34px;height:34px;border-radius:11px;background:var(--nude);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.irow .n{font-size:15px;font-weight:900;color:var(--black);letter-spacing:-.3px}
+.irow p{font-size:11px;color:#726a62;line-height:1.4;margin-top:1px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.chip{background:rgba(255,255,255,.6);border:1px solid var(--glassbord);border-radius:20px;padding:6px 11px;font-size:10.5px;font-weight:800;color:#6a533f}
+.prodline{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.prodline:last-child{border:none}
+.prodline .tg{font-size:9px;font-weight:900;color:#5a4636;background:var(--grad);border-radius:8px;padding:4px 7px;min-width:38px;text-align:center}
+.prodline b{font-size:12.5px}.prodline p{font-size:10.5px;color:var(--muted)}
+.wincheck{display:flex;align-items:center;gap:9px;padding:7px 0;font-size:12px;font-weight:700}
+.wincheck .ck{width:22px;height:22px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;color:#2f5f46}
+
+/* ===== DEVICE FRAME ===== */
+.device{position:relative;z-index:2;display:flex;flex-direction:column;background:#0c0b0a;overflow:hidden;flex-shrink:0;
+  box-shadow:0 50px 90px rgba(17,17,17,.3),0 8px 30px rgba(217,184,167,.32),0 0 0 2px rgba(255,255,255,.05) inset}
+body.mode-phone .device{width:min(392px,92vw);height:812px;border-radius:52px;padding:11px}
+body.mode-tablet .device{width:min(720px,94vw);height:900px;border-radius:44px;padding:16px}
+body.mode-desktop .device{width:min(1140px,96vw);height:730px;border-radius:16px;padding:0}
+.chrome-notch,.chrome-cam,.chrome-browser{display:none}
+body.mode-phone .chrome-notch{display:block;position:absolute;top:22px;left:50%;transform:translateX(-50%);width:118px;height:29px;background:#0c0b0a;border-radius:18px;z-index:60}
+body.mode-tablet .chrome-cam{display:block;position:absolute;top:7px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:#2c2824;z-index:60}
+body.mode-desktop .chrome-browser{display:flex;align-items:center;gap:8px;height:46px;padding:0 16px;background:#17140f;flex-shrink:0}
+.chrome-browser .d{width:11px;height:11px;border-radius:50%}
+.chrome-browser .url{margin-left:12px;flex:1;max-width:340px;height:26px;background:rgba(255,255,255,.08);border-radius:9px;display:flex;align-items:center;padding:0 12px;font-size:11px;color:#c9bfb2;font-weight:600;gap:7px}
+.screen{flex:1;position:relative;overflow:hidden;background:var(--ivory);display:flex;flex-direction:column;min-height:0}
+body.mode-phone .screen{border-radius:42px}
+body.mode-tablet .screen{border-radius:30px}
+body.mode-desktop .screen{border-radius:0 0 16px 16px}
+.statusbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:12.5px;font-weight:600;color:var(--ink);flex-shrink:0;z-index:40}
+body.mode-desktop .statusbar{display:none}
+.scroll{flex:1;overflow-y:auto;scrollbar-width:none;position:relative}
+.scroll::-webkit-scrollbar{display:none}
+.meshbg{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;width:100%;height:100%}
+.view{display:none;padding:4px 18px 22px;position:relative;z-index:2}
+body.mode-tablet .view,body.mode-desktop .view{max-width:620px;margin:0 auto;padding:8px 22px 26px}
+.view.active{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===== glass + generic app ===== */
+.card{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glassbord);border-radius:28px;box-shadow:var(--shadow);padding:20px;margin-bottom:14px;transition:transform .25s ease,box-shadow .25s ease}
+.card.tilt:hover{transform:translateY(-4px) scale(1.008);box-shadow:0 26px 60px rgba(17,17,17,.12)}
+.eyebrow{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1.big{font-size:29px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin:10px 0}
+.lead{font-size:13.5px;color:#6f665e;line-height:1.5}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;font-weight:700;border-radius:20px;padding:16px 20px;font-size:14.5px;width:100%;transition:transform .18s ease;font-family:inherit}
+.btn:active{transform:scale(.97)}
+.btn-black{background:var(--black);color:var(--ivory);box-shadow:0 14px 30px rgba(17,17,17,.22)}
+.btn-black:hover{transform:translateY(-2px)}
+.btn-nude{background:var(--grad);color:#5a4636;box-shadow:0 14px 30px rgba(217,184,167,.4)}
+.mini{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;letter-spacing:.4px}
+.hero{border-radius:30px;padding:26px 22px;color:var(--black);position:relative;overflow:hidden;background:var(--grad);box-shadow:0 20px 45px rgba(217,184,167,.4)}
+.hero .glowbottle{position:absolute;right:-6px;bottom:-14px;width:96px;height:150px;opacity:.9;animation:bob 4.5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pill{background:rgba(255,255,255,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);border-radius:30px;padding:8px 13px;font-size:11px;font-weight:700}
+.slabel{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:800;margin:22px 4px 12px;display:flex;align-items:center;gap:8px}
+.slabel:before{content:"";width:16px;height:2px;background:var(--rose);border-radius:2px}
+.ritual{display:flex;gap:10px}
+.rchip{flex:1;background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--glassbord);border-radius:22px;padding:15px 8px;text-align:center;box-shadow:var(--shadow)}
+.rchip .ic{margin:0 auto 6px}
+.rchip b{display:block;font-size:12px;letter-spacing:.5px}
+.rchip span{font-size:9.5px;color:var(--muted)}
+.frow{display:flex;gap:13px;align-items:center;padding:4px 0}
+.ficon{width:44px;height:44px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.frow b{font-size:13.5px}.frow p{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+.ringwrap{position:relative;display:inline-block}
+.ringwrap .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.qtop{display:flex;align-items:center;gap:14px;margin:16px 4px 20px}
+.qtop .meta .t{font-size:16px;font-weight:800;letter-spacing:-.3px}
+.qtop .meta .s{font-size:11.5px;color:var(--muted)}
+.qcard{animation:swin .32s ease}
+@keyframes swin{from{opacity:0;transform:translateX(26px) scale(.98)}to{opacity:1;transform:none}}
+.qcard h2{font-size:21px;font-weight:800;letter-spacing:-.4px;margin-bottom:5px}
+.qcard .qsub{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.opt{display:flex;align-items:center;gap:13px;background:var(--glass);backdrop-filter:blur(16px);border:1.5px solid var(--glassbord);border-radius:22px;padding:16px;margin-bottom:11px;cursor:pointer;transition:.18s;font-size:14px;font-weight:600}
+.opt:hover{transform:translateX(4px);border-color:var(--rose)}
+.opt.sel{border-color:var(--coral);background:#fff}
+.opt .oic{width:38px;height:38px;border-radius:13px;background:var(--nude);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.scanstage{position:relative;height:300px;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 50% 45%,#2a2622,#0f0d0b);margin:14px 0 8px;display:flex;align-items:center;justify-content:center}
+.scanface{position:relative;width:190px;height:190px;border-radius:50%;border:2px solid rgba(217,184,167,.5);display:flex;align-items:center;justify-content:center}
+.pulse{position:absolute;inset:0;border-radius:50%;border:2px solid var(--rose);animation:pulse 2s ease-out infinite}
+.pulse:nth-child(2){animation-delay:.6s}.pulse:nth-child(3){animation-delay:1.2s}
+@keyframes pulse{0%{transform:scale(.75);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+.corner{position:absolute;width:26px;height:26px;border:3px solid var(--nude);opacity:.9}
+.corner.tl{top:14px;left:14px;border-right:none;border-bottom:none;border-radius:8px 0 0 0}
+.corner.tr{top:14px;right:14px;border-left:none;border-bottom:none;border-radius:0 8px 0 0}
+.corner.bl{bottom:14px;left:14px;border-right:none;border-top:none;border-radius:0 0 0 8px}
+.corner.br{bottom:14px;right:14px;border-left:none;border-top:none;border-radius:0 0 8px 0}
+.scanline{position:absolute;left:8%;right:8%;height:3px;background:linear-gradient(90deg,transparent,var(--coral),transparent);box-shadow:0 0 14px 3px rgba(255,125,106,.5);border-radius:3px;animation:scanmove 2.2s ease-in-out infinite}
+@keyframes scanmove{0%{top:16px}50%{top:280px}100%{top:16px}}
+.scandot{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--nude);opacity:.7;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}20%{opacity:.8}100%{transform:translateY(-220px);opacity:0}}
+.scanhead{text-align:center;font-size:16px;font-weight:800;margin:2px 0}
+.scanhead .b{color:var(--coral)}
+.citem{display:flex;align-items:center;gap:11px;padding:11px 14px;margin-bottom:8px;border-radius:18px;background:var(--glass);border:1px solid var(--glassbord);opacity:.35;transform:translateX(-6px);transition:all .4s ease}
+.citem.on{opacity:1;transform:none}
+.citem .ck{width:24px;height:24px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.3s;transform:scale(.5);color:#2f5f46}
+.citem.on .ck{transform:scale(1)}
+.citem b{font-size:13px}.citem .v{margin-left:auto;font-size:11px;color:var(--muted);font-weight:700}
+.wrapped{border-radius:30px;padding:26px 20px;text-align:center;background:linear-gradient(160deg,#111,#2a2420);color:var(--ivory);position:relative;overflow:hidden}
+.wrapped:after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 0%,rgba(217,184,167,.35),transparent 70%)}
+.wrapped .k{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;opacity:.75;position:relative}
+.wrapped .idname{font-size:32px;font-weight:900;letter-spacing:-.6px;margin:10px 0 6px;position:relative;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.wrapped p{font-size:12.5px;opacity:.85;position:relative;line-height:1.5}
+.insight{display:flex;gap:10px;margin-top:12px}
+.icell{flex:1;background:var(--glass);backdrop-filter:blur(14px);border:1px solid var(--glassbord);border-radius:20px;padding:14px 10px;text-align:center}
+.icell .v{font-size:22px;font-weight:900;letter-spacing:-.5px}
+.icell .l{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px;font-weight:700}
+.regimen{display:flex;gap:13px;align-items:center;padding:13px;margin-bottom:11px}
+.regimen .pv{width:50px;height:60px;border-radius:15px;flex-shrink:0;background:var(--grad);display:flex;align-items:center;justify-content:center}
+.regimen h4{font-size:13.5px}.regimen p{font-size:11px;color:var(--muted)}
+.regimen .price{margin-left:auto;font-weight:800;font-size:14px}
+.scorehead{display:flex;align-items:center;gap:18px;padding:22px}
+.contrib{display:flex;gap:8px;margin-top:12px}
+.cpill{flex:1;text-align:center;background:rgba(255,255,255,.5);border:1px solid var(--glassbord);border-radius:16px;padding:10px 4px}
+.cpill .v{font-size:14px;font-weight:800}.cpill .l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.streakrow{display:flex;gap:6px;margin-top:8px}
+.day{flex:1;text-align:center;border-radius:15px;padding:11px 3px;font-size:10px;font-weight:700;background:rgba(255,255,255,.45);border:1px solid var(--glassbord);color:var(--muted)}
+.day.on{background:var(--grad);color:#5a4636;border-color:transparent}
+.day .fl{display:block;margin-bottom:3px}
+.day.pulse-now{animation:daypulse .6s ease}
+@keyframes daypulse{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+.emptyphoto{text-align:center;padding:26px 16px;border:1.6px dashed var(--rose);border-radius:24px;background:rgba(255,255,255,.4)}
+.emptyphoto .big{font-size:14px;font-weight:800;margin:8px 0 3px}
+.emptyphoto p{font-size:11.5px;color:var(--muted);margin-bottom:14px}
+.miles{padding-left:6px;margin-top:4px}
+.mile{display:flex;gap:12px;padding:11px 0 11px 16px;border-left:2px solid var(--line);position:relative}
+.mile:before{content:"";position:absolute;left:-6px;top:15px;width:11px;height:11px;border-radius:50%;background:var(--line)}
+.mile.done:before{background:var(--sage);box-shadow:0 0 0 3px rgba(215,228,221,.7)}
+.mile.now:before{background:var(--coral);box-shadow:0 0 0 3px rgba(255,125,106,.25)}
+.mile .wk{font-size:9.5px;font-weight:800;color:var(--muted);min-width:36px;padding-top:1px}
+.mile b{font-size:12.5px}.mile p{font-size:11px;color:var(--muted)}
+.guarantee{display:flex;gap:11px;align-items:center;padding:16px;border-radius:22px;background:var(--black);color:var(--ivory)}
+.guarantee .g{width:38px;height:38px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.guarantee b{font-size:12.5px}.guarantee p{font-size:10.5px;opacity:.75;margin-top:2px}
+.level{border-radius:28px;padding:22px;text-align:center;background:linear-gradient(160deg,#111,#2b2521);color:var(--ivory);position:relative;overflow:hidden}
+.level:after{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 120%,rgba(217,184,167,.4),transparent)}
+.level .lv{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.7;position:relative}
+.level .qn{font-size:24px;font-weight:900;letter-spacing:-.4px;margin-top:6px;position:relative}
+.level .pts{font-size:12px;opacity:.8;margin-top:6px;position:relative}
+.lvbar{height:8px;border-radius:8px;background:rgba(255,255,255,.18);margin-top:14px;overflow:hidden;position:relative}
+.lvbar i{display:block;height:100%;width:0;background:var(--grad);border-radius:8px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.ach{display:flex;align-items:center;gap:12px;padding:15px;border-radius:22px;background:var(--glass);border:1px solid var(--glassbord);box-shadow:var(--shadow)}
+.ach .medal{width:46px;height:46px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ach b{font-size:13px}.ach .tag{font-size:11px;color:var(--coral);font-weight:800}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.badge{text-align:center;padding:14px 6px;border-radius:20px;background:var(--glass);border:1px solid var(--glassbord)}
+.badge .bi{width:40px;height:40px;border-radius:13px;background:var(--nude);display:flex;align-items:center;justify-content:center;margin:0 auto 7px}
+.badge span{font-size:9.5px;font-weight:700;color:#6f665e;display:block;line-height:1.2}
+.badge.locked{opacity:.4}
+.hashwrap{overflow:hidden;border-radius:22px;background:var(--glass);border:1px solid var(--glassbord);padding:12px 0;box-shadow:var(--shadow)}
+.hashtrack{display:flex;gap:12px;white-space:nowrap;animation:march 22s linear infinite;width:max-content}
+.hashtrack span{font-size:12px;font-weight:800;color:#7a6f64}
+.hashtrack span.hot{color:var(--coral)}
+@keyframes march{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.prod{display:flex;gap:14px;align-items:center;padding:14px}
+.prod .pv{width:54px;height:66px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:bob 5s ease-in-out infinite}
+.prod h4{font-size:14px}.prod p{font-size:11px;color:var(--muted)}
+.prod .price{margin-left:auto;font-weight:800;font-size:15px}
+.kit{border-radius:28px;padding:20px;background:var(--black);color:var(--ivory);box-shadow:var(--shadow)}
+.kit .row{display:flex;justify-content:space-between;align-items:center}
+.kit s{opacity:.5;font-size:12px}
+.trial{display:flex;gap:10px;margin-top:12px}
+.tcell{flex:1;background:var(--glass);border:1px solid var(--glassbord);border-radius:20px;padding:14px;text-align:center}
+.tcell .v{font-size:19px;font-weight:900}.tcell .l{font-size:10px;color:var(--muted)}
+.brandfoot{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.brandfoot .p1{font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;font-weight:700}
+.brandfoot .p2{font-size:12px;font-weight:800;margin-top:5px}
+.brandfoot .p3{font-size:10.5px;color:var(--muted);margin-top:3px;font-style:italic}
+.tabbar{display:flex;background:rgba(250,248,245,.9);backdrop-filter:blur(20px);border-top:1px solid var(--line);flex-shrink:0;padding-bottom:6px}
+.tabbar button{flex:1;background:none;border:none;padding:10px 2px 8px;font-size:9px;color:var(--muted);font-weight:700;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:4px}
+.tabbar button svg{opacity:.55;transition:.2s}
+.tabbar button.on{color:var(--black)}
+.tabbar button.on svg{opacity:1}
+.toast{position:absolute;bottom:82px;left:50%;transform:translateX(-50%) translateY(30px);background:var(--black);color:var(--ivory);padding:12px 20px;border-radius:30px;font-size:12.5px;font-weight:700;opacity:0;transition:.3s;z-index:80;white-space:nowrap;box-shadow:0 16px 34px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#confetti{position:absolute;inset:0;z-index:75;pointer-events:none}
+.skel{background:linear-gradient(100deg,rgba(255,255,255,.4) 30%,rgba(217,184,167,.25) 50%,rgba(255,255,255,.4) 70%);background-size:200% 100%;animation:shimmer 1.3s linear infinite;border-radius:20px}
+@keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+.hidden{display:none!important}
+
+/* ===== small-window fallback: stack ===== */
+@media(max-width:1000px){
+  .stage{flex-direction:column;align-items:center}
+  body .col{flex:1 1 auto!important;width:100%;max-width:660px!important;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:0 auto!important}
+  .framezone{order:-1;width:100%}
+  body.mode-desktop .device,body.mode-tablet .device{width:min(100%,96vw)}
+}
+</style>
+</head>
+<body class="mode-phone">
+<div id="ambient"></div>
+
+<!-- ===== BANNER ===== -->
+<div class="banner">
+  <div class="bt"><h1 class="lmark">SOR<span class="ac">E</span>AL</h1><small>BY L'ORÉAL INDIA · SCALP LAB</small></div>
+  <div class="tag">Skincare ends at your hairline. <b>We don't.</b></div>
+  <div class="switch">
+    <button id="sw-phone" class="on" onclick="setMode('phone')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="3" stroke="#111" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="#111" stroke-width="1.8" stroke-linecap="round"/></svg>Phone</button>
+    <button id="sw-tablet" onclick="setMode('tablet')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#111" stroke-width="1.8"/><path d="M11 18h2" stroke="#111" stroke-width="1.8" stroke-linecap="round"/></svg>Tablet</button>
+    <button id="sw-desktop" onclick="setMode('desktop')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="#111" stroke-width="1.8"/><path d="M8 20h8M12 16v4" stroke="#111" stroke-width="1.8" stroke-linecap="round"/></svg>Desktop</button>
+  </div>
+</div>
+
+<!-- ===== STAGE ===== -->
+<div class="stage">
+
+  <!-- LEFT INFOGRAPHICS: THE PROBLEM -->
+  <div class="col col-left">
+    <div class="icard">
+      <div class="ieb">The white-space we attack</div>
+      <div class="kpi">45<small>/45</small></div>
+      <div class="klabel">Opportunity Score — the “90-day patience tax” <span class="ref">[22]</span></div>
+      <div class="track" style="margin-top:9px"><i style="width:100%"></i></div>
+      <div class="idesc">The #1 gap across <b>9 of 12 brands</b>. Hair biology needs a full <b>~90-day cycle</b> to show change — but nothing de-risks the wait. Users see nothing by week 4, quit, and post a 1★. The chemistry never gets its chance.</div>
+    </div>
+
+    <div class="icard">
+      <div class="ieb">Two gaps compound it</div>
+      <div class="bar"><div class="bl"><span>Efficacy-as-a-lottery</span><span class="n">28</span></div><div class="track"><i class="coral" data-w="62%"></i></div></div>
+      <div class="bar"><div class="bl"><span>Adherence / consistency</span><span class="n">24</span></div><div class="track"><i data-w="53%"></i></div></div>
+      <div class="idesc">“Works for some, not others” + “products fail on broken consistency, not weak chemistry.” <span class="ref">[22]</span></div>
+      <div class="jtbd">JOB TO BE DONE — make the wait <b>visible, winnable & guaranteed.</b></div>
+    </div>
+
+    <div class="icard">
+      <div class="ieb">India-true problems (not the obvious ones)</div>
+      <div class="irow"><div class="ii"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.6"/></svg></div><div><span class="n">40.7%</span><p>Telogen effluvium = India's #1 hair-fall type; concentrated in females <b>12–39</b> — our exact target (HAILO) <span class="ref">[4]</span></p></div></div>
+      <div class="irow"><div class="ii"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 10l7-7 7 7" stroke="#5a4636" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span class="n" style="font-size:13px">Post-COVID surge</span><p>2024 review confirms a global telogen-effluvium wave → “sudden hair fall” anxiety in 18–30s <span class="ref">[5]</span></p></div></div>
+      <div class="irow"><div class="ii"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 4c3 4 5 6 5 9a5 5 0 01-10 0c0-3 2-5 5-9z" stroke="#5a4636" stroke-width="1.6"/></svg></div><div><span class="n">+30%</span><p>Monsoon shedding spike, Jul–Sep <span class="ref">[18]</span> — our launch window & recurring content moment</p></div></div>
+      <div class="irow"><div class="ii"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M6 8h12M8 16h8" stroke="#5a4636" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><span class="n" style="font-size:13px">Hard water</span><p>High-TDS build-up in Delhi/Blr/Hyd/Chennai — our diagnostic tunes to your city water <span class="ref">[18]</span></p></div></div>
+    </div>
+  </div>
+
+  <!-- ===== DEVICE ===== -->
+  <div class="framezone">
+    <div class="device" id="device">
+      <div class="chrome-notch"></div>
+      <div class="chrome-cam"></div>
+      <div class="chrome-browser"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1112 0v2" stroke="#c9bfb2" stroke-width="1.8"/><rect x="4" y="10" width="16" height="10" rx="2" stroke="#c9bfb2" stroke-width="1.8"/></svg>soreal.app</span></div>
+
+      <div class="screen">
+        <div class="statusbar">
+          <span>9:41</span>
+          <span style="font-weight:800;letter-spacing:1px;">#DoYourSoReal</span>
+          <span style="display:flex;gap:5px;align-items:center">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><rect x="0" y="3" width="2.5" height="5" rx="1" fill="#111"/><rect x="3.5" y="2" width="2.5" height="6" rx="1" fill="#111"/><rect x="7" y="1" width="2.5" height="7" rx="1" fill="#111"/><rect x="10.5" y="0" width="2.5" height="8" rx="1" fill="#111" opacity=".35"/></svg>
+            <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x="0.5" y="0.5" width="18" height="10" rx="3" stroke="#111" opacity=".4"/><rect x="2" y="2" width="13" height="7" rx="1.5" fill="#111"/><rect x="20" y="3.5" width="1.5" height="4" rx="1" fill="#111" opacity=".5"/></svg>
+          </span>
+        </div>
+
+        <div class="scroll" id="scroll">
+          <canvas class="meshbg" id="mesh"></canvas>
+
+          <!-- HOME -->
+          <section class="view active" id="v-home">
+            <div class="hero">
+              <div class="eyebrow" style="color:#7a6047">Your scalp is skin. Let's treat it like it.</div>
+              <h1 class="big">Your scalp has entered its glow-up era.</h1>
+              <div class="lead" style="color:#6a533f;font-weight:600">Track. Treat. Transform.</div>
+              <div class="pillrow"><span class="pill">✦ AI Diagnostic</span><span class="pill">Root Score</span><span class="pill">90-day proof</span></div>
+              <svg class="glowbottle" viewBox="0 0 60 90"><rect x="20" y="6" width="20" height="10" rx="3" fill="#111" opacity=".85"/><rect x="16" y="16" width="28" height="68" rx="13" fill="#fff" opacity=".8"/><rect x="16" y="52" width="28" height="32" rx="13" fill="#111" opacity=".14"/><circle cx="30" cy="40" r="8" fill="#FF7D6A" opacity=".5"/></svg>
+            </div>
+            <button class="btn btn-black" style="margin-top:16px" onclick="startDiag()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#FAF8F5" stroke-width="2"/><path d="M16 16l5 5" stroke="#FAF8F5" stroke-width="2" stroke-linecap="round"/></svg>Start your AI Scalp Diagnostic</button>
+            <div class="slabel">Your ritual, 3 verbs</div>
+            <div class="ritual">
+              <div class="rchip"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4h10l-1 5H8L7 4z" stroke="#5a4636" stroke-width="1.6"/><path d="M8 9c0 4-2 5-2 8a4 4 0 008 0c0-3-2-4-2-8" stroke="#5a4636" stroke-width="1.6"/></svg><b>WASH</b><span>Cleanse & prep</span></div>
+              <div class="rchip"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="8" y="3" width="8" height="14" rx="4" stroke="#5a4636" stroke-width="1.6"/><path d="M8 10h8" stroke="#5a4636" stroke-width="1.6"/></svg><b>FEED</b><span>AM · inside</span></div>
+              <div class="rchip"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.6" stroke-linejoin="round"/></svg><b>PROVE</b><span>PM · track it</span></div>
+            </div>
+            <div class="slabel">Why we're different</div>
+            <div class="card tilt"><div class="frow"><div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><b>Melatonin scalp serum</b><p>A review of 11 studies / 2,267 people found topical melatonin raised density & cut shedding. Almost no Indian brand uses it.</p></div></div></div>
+            <div class="card tilt"><div class="frow"><div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3z" stroke="#5a4636" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#5a4636" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b>Zero formaldehyde-releasers</b><p>No DMDM hydantoin, no sting, no synthetic fragrance. Sensitive-safe, ahead of regulation.</p></div></div></div>
+            <div class="brandfoot"><div class="p1">Powered by L'Oréal Scalp Intelligence™</div><div class="p2">Developed with dermatologists & hair scientists</div><div class="p3">L'Oréal Paris — Because you're worth it.</div></div>
+          </section>
+
+          <!-- QUIZ -->
+          <section class="view" id="v-quiz">
+            <div class="qtop">
+              <div class="ringwrap"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" fill="none" stroke="rgba(17,17,17,.08)" stroke-width="4"/><circle id="qring" cx="26" cy="26" r="22" fill="none" stroke="#FF7D6A" stroke-width="4" stroke-linecap="round" stroke-dasharray="138" stroke-dashoffset="138" transform="rotate(-90 26 26)"/></svg><div class="center"><b id="qnum" style="font-size:13px;font-weight:800">1</b></div></div>
+              <div class="meta"><div class="t">AI Scalp Diagnostic</div><div class="s">Question <span id="qof">1</span>/5 · Let's decode your roots.</div></div>
+            </div>
+            <div class="qcard" id="qbody"></div>
+          </section>
+
+          <!-- SCAN -->
+          <section class="view" id="v-scan">
+            <div style="text-align:center;margin-top:14px" class="eyebrow">L'Oréal Beauty Genius × FaceID</div>
+            <div class="scanstage" id="scanstage">
+              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+              <div class="scanface"><span class="pulse"></span><span class="pulse"></span><span class="pulse"></span><svg width="70" height="70" viewBox="0 0 24 24" fill="none" opacity=".85"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#EADDCB" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+              <div class="scanline"></div>
+            </div>
+            <div class="scanhead">Scanning your scalp<span class="b">…</span></div>
+            <div class="checkl" id="checkl">
+              <div class="citem" data-v="Optimal"><span class="ck">✓</span><b>Hydration</b><span class="v"></span></div>
+              <div class="citem" data-v="Balanced"><span class="ck">✓</span><b>Sebum levels</b><span class="v"></span></div>
+              <div class="citem" data-v="Rebuilding"><span class="ck">✓</span><b>Barrier strength</b><span class="v"></span></div>
+              <div class="citem" data-v="Measured"><span class="ck">✓</span><b>Density estimation</b><span class="v"></span></div>
+              <div class="citem" data-v="High load"><span class="ck">✓</span><b>Environmental impact</b><span class="v"></span></div>
+            </div>
+          </section>
+
+          <!-- RESULT -->
+          <section class="view" id="v-result">
+            <div class="wrapped">
+              <div class="k">Your SoReal Identity</div>
+              <div class="idname" id="idname">THE ROOT REBEL</div>
+              <p id="iddesc">You shed under pressure — humidity, hard water, late nights. Your roots don't need babying; they need a smarter system.</p>
+              <div class="insight"><div class="icell"><div class="v" id="i1">68</div><div class="l">Hydration</div></div><div class="icell"><div class="v" id="i2">High</div><div class="l">Env. load</div></div><div class="icell"><div class="v" id="i3">90d</div><div class="l">To proof</div></div></div>
+            </div>
+            <div class="slabel">Your matched Root System</div>
+            <div id="regimenList"></div>
+            <div class="card" style="background:var(--sage);border-color:transparent"><b style="font-size:12.5px">Climate add-on detected: <span id="climAdd">Hard-water shield</span></b><p style="font-size:11.5px;color:#4d5b52;margin-top:3px">Matched to your city's water + season. Your Root System re-tunes every quarter.</p></div>
+            <button class="btn btn-black" onclick="go('rootlab');toast('Root System saved · Day 1 unlocked')">Start my proof journey</button>
+            <div class="mini">#ProofOverPromises · #RootReveal</div>
+          </section>
+
+          <!-- ROOT LAB -->
+          <section class="view" id="v-rootlab">
+            <div id="labSkeleton" class="hidden"><div class="skel" style="height:150px;margin:16px 0 14px"></div><div class="skel" style="height:90px;margin-bottom:12px"></div><div class="skel" style="height:120px"></div></div>
+            <div id="labContent">
+              <div class="slabel" style="margin-top:16px">Root Lab</div>
+              <div class="card scorehead" style="padding:22px">
+                <div class="ringwrap"><svg width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="44" fill="none" stroke="rgba(17,17,17,.07)" stroke-width="9"/><circle id="scoreRing" cx="52" cy="52" r="44" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="276" transform="rotate(-90 52 52)"/><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5E8DE"/><stop offset="1" stop-color="#D9B8A7"/></linearGradient></defs></svg><div class="center"><b style="font-size:28px;font-weight:900" id="rootScore">0</b><span style="font-size:9px;color:var(--muted);letter-spacing:1px">ROOT SCORE</span></div></div>
+                <div style="flex:1"><div style="font-size:14px;font-weight:800">Today's Root Score</div><div style="font-size:11.5px;color:#4c9a74;font-weight:700;margin-top:2px">▲ +3 from yesterday</div><div class="contrib"><div class="cpill"><div class="v" style="color:#4c9a74">+2</div><div class="l">Sleep</div></div><div class="cpill"><div class="v" style="color:#4c9a74">+1</div><div class="l">Hydration</div></div><div class="cpill"><div class="v" style="color:var(--coral)">−1</div><div class="l">Stress</div></div></div></div>
+              </div>
+              <div class="slabel">Root Streak · keep it lit</div>
+              <div class="card" style="padding:16px"><div class="streakrow"><div class="day on"><span class="fl">✦</span>M</div><div class="day on"><span class="fl">✦</span>T</div><div class="day on"><span class="fl">✦</span>W</div><div class="day on"><span class="fl">✦</span>T</div><div class="day on"><span class="fl">✦</span>F</div><div class="day on"><span class="fl">✦</span>S</div><div class="day" id="todayDay" onclick="lightStreak()" style="cursor:pointer"><span class="fl">+</span>S</div></div><p style="font-size:11px;color:var(--muted);margin-top:10px">Tap tonight's node to log your serum — <b id="streakN">25</b>-day Root Streak</p></div>
+              <div class="slabel">Your proof, in photos</div>
+              <div class="emptyphoto" id="emptyPhoto"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="4" stroke="#D9B8A7" stroke-width="1.6"/><circle cx="12" cy="13" r="4" stroke="#D9B8A7" stroke-width="1.6"/><path d="M8 6l1.5-2h5L16 6" stroke="#D9B8A7" stroke-width="1.6" stroke-linejoin="round"/></svg><div class="big">No photo uploaded yet</div><p>Let's make future you proud.</p><button class="btn btn-nude" style="max-width:220px;margin:0 auto" onclick="takePhoto()">Take today's photo</button></div>
+              <div class="slabel">Early-signal milestones</div>
+              <div class="card" style="padding:18px"><div class="miles"><div class="mile done"><span class="wk">WK 2</span><div><b>Scalp calmer, less itch</b><p>Barrier markers self-reported ✓</p></div></div><div class="mile done"><span class="wk">WK 4</span><div><b>Shedding slows (−31%)</b><p>First measurable signal — passed ✓</p></div></div><div class="mile now"><span class="wk">WK 6</span><div><b>Baby hairs at hairline</b><p>Unlocks in 6 days · reminder set</p></div></div><div class="mile"><span class="wk">WK 12</span><div><b>Density + the Root Reveal</b><p>90-day guarantee checkpoint</p></div></div></div></div>
+              <div class="guarantee"><div class="g"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3z" stroke="#5a4636" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><b>Visible results in 90 days — or your money back.</b><p>Your photos + Root Score are the proof. No fine print.</p></div></div>
+            </div>
+          </section>
+
+          <!-- REWARDS -->
+          <section class="view" id="v-rewards">
+            <div class="slabel" style="margin-top:16px">Rewards</div>
+            <div class="level"><div class="lv">Level 4</div><div class="qn">The Consistency Queen</div><div class="pts"><b id="rootPts">1,240</b> Root Points · 260 to Level 5</div><div class="lvbar"><i id="lvbar"></i></div></div>
+            <div class="ach" style="margin-top:14px"><div class="medal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="#5a4636" stroke-width="1.7"/><path d="M9 14l-2 7 5-3 5 3-2-7" stroke="#5a4636" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><div class="tag">Achievement Unlocked</div><b>#ProofInProgress</b><p style="font-size:11px;color:var(--muted)">+50 Root Points earned</p></div></div>
+            <div class="slabel">Root Badges</div>
+            <div class="badges"><div class="badge"><div class="bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.6"/></svg></div><span>25-day<br>Root Streak</span></div><div class="badge"><div class="bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="4" stroke="#5a4636" stroke-width="1.6"/><circle cx="12" cy="13" r="3.5" stroke="#5a4636" stroke-width="1.6"/></svg></div><span>4 proof<br>photos</span></div><div class="badge locked"><div class="bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="3" stroke="#9a9088" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#9a9088" stroke-width="1.6"/></svg></div><span>Day 90<br>Root Reveal</span></div></div>
+            <div class="slabel">The #DoYourSoReal world</div>
+            <div class="hashwrap"><div class="hashtrack"><span class="hot">#DoYourSoReal</span><span>#ProofOverPromises</span><span>#RootReveal</span><span>#ScalpIsSkin</span><span class="hot">#ProofGeneration</span><span>#RootsDontLie</span><span>#90DaysToProof</span><span>#RootLab</span><span class="hot">#DoYourSoReal</span><span>#ProofOverPromises</span><span>#RootReveal</span><span>#ScalpIsSkin</span><span class="hot">#ProofGeneration</span><span>#RootsDontLie</span><span>#90DaysToProof</span><span>#RootLab</span></div></div>
+            <div class="brandfoot"><div class="p1">Powered by L'Oréal Scalp Intelligence™</div><div class="p3">L'Oréal Paris — Because you're worth it.</div></div>
+          </section>
+
+          <!-- SHOP -->
+          <section class="view" id="v-shop">
+            <div class="hero" style="margin-top:14px"><div class="eyebrow" style="color:#7a6047">The range</div><h1 class="big" style="font-size:25px">Two heroes.<br>One rhythm.</h1><div class="lead" style="color:#6a533f">AM feeds the root. PM repairs while you sleep.</div></div>
+            <div class="card prod" style="margin-top:14px"><div class="pv"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><h4>Night Shift Scalp Serum</h4><p>Melatonin 0.1% + Niacinamide · roll-on</p></div><div class="price">₹699</div></div>
+            <div class="card prod"><div class="pv"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="8" y="3" width="8" height="14" rx="4" stroke="#5a4636" stroke-width="1.7"/></svg></div><div><h4>Inside Story</h4><p>Vit-D3 · Iron · Zinc · Biotin · AM</p></div><div class="price">₹599</div></div>
+            <div class="kit"><div class="row"><div><b style="font-size:14px">The Proof Kit — subscribe</b><p style="font-size:11px;opacity:.75">Both heroes + Root Lab + 90-day guarantee</p></div><div style="text-align:right"><div style="font-size:20px;font-weight:900">₹999<span style="font-size:11px;opacity:.7">/mo</span></div><s>₹1298</s></div></div><button class="btn btn-nude" style="margin-top:14px" onclick="celebrate();toast('Welcome to SoReal — kit ships tomorrow')">Start — 23% off + free strand tracker</button></div>
+            <div class="trial"><div class="tcell"><div class="v">₹199</div><div class="l">Trial mini on Blinkit / Zepto</div></div><div class="tcell"><div class="v">90</div><div class="l">Day money-back proof</div></div></div>
+            <div class="brandfoot"><div class="p2" style="font-size:15px;letter-spacing:.5px">SoReal™</div><div class="p3">Your scalp's glow-up starts here. #DoYourSoReal</div></div>
+          </section>
+
+        </div>
+
+        <div class="tabbar">
+          <button class="on" id="t-home" onclick="go('home')"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6 8 6v8a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-8z" stroke="#111" stroke-width="1.7" stroke-linejoin="round"/></svg>Home</button>
+          <button id="t-quiz" onclick="startDiag()"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#111" stroke-width="1.7"/><path d="M16 16l5 5" stroke="#111" stroke-width="1.7" stroke-linecap="round"/></svg>Diagnose</button>
+          <button id="t-rootlab" onclick="go('rootlab')"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M9 3h6M12 3v6l5 9a2 2 0 01-2 3H9a2 2 0 01-2-3l5-9" stroke="#111" stroke-width="1.7" stroke-linejoin="round"/></svg>Root Lab</button>
+          <button id="t-rewards" onclick="go('rewards')"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5.5" stroke="#111" stroke-width="1.7"/><path d="M9 14l-2 7 5-3 5 3-2-7" stroke="#111" stroke-width="1.7" stroke-linejoin="round"/></svg>Rewards</button>
+          <button id="t-shop" onclick="go('shop')"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="#111" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8a3 3 0 016 0" stroke="#111" stroke-width="1.7"/></svg>Shop</button>
+        </div>
+
+        <canvas id="confetti"></canvas>
+        <div class="toast" id="toast"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT INFOGRAPHICS: OUR ANSWER -->
+  <div class="col col-right">
+    <div class="icard">
+      <div class="ieb">The “inside” story is a deficiency story</div>
+      <div class="bar"><div class="bl"><span>Anaemia · women 15–49 (NFHS-5) <span class="ref">[3]</span></span><span class="n">57%</span></div><div class="track"><i class="coral" data-w="57%"></i></div></div>
+      <div class="bar"><div class="bl"><span>Vitamin-D deficiency <span class="ref">[2]</span></span><span class="n">61%</span></div><div class="track"><i data-w="61%"></i></div></div>
+      <div class="bar"><div class="bl"><span>Iron deficiency <span class="ref">[2]</span></span><span class="n">54%</span></div><div class="track"><i data-w="54%"></i></div></div>
+      <div class="bar"><div class="bl"><span>B12 deficiency <span class="ref">[2]</span></span><span class="n">53%</span></div><div class="track"><i data-w="53%"></i></div></div>
+      <div class="idesc">All clinically linked to shedding — a genuine, under-served reason for our <b>Inside Story</b> supplement (the AM “inside recovery”).</div>
+    </div>
+
+    <div class="icard">
+      <div class="ieb">The hero active — “the science proves it”</div>
+      <div class="kpi">2,267<small> patients</small></div>
+      <div class="klabel">across <b>11 clinical studies</b> — Topical Melatonin <span class="ref">[1]</span></div>
+      <div class="idesc">2023 systematic review (Journal of Drugs in Dermatology): melatonin <b>↑ density, ↑ anagen, ↓ shedding</b>, minimal side effects. Our Colgate-style, citable claim.</div>
+      <div class="chips"><span class="chip">Non-hormonal</span><span class="chip">0.1% · once daily</span><span class="chip">90–180 days</span><span class="chip">Novel in India</span></div>
+    </div>
+
+    <div class="icard">
+      <div class="ieb">The range — fix it inside & out</div>
+      <div class="prodline"><span class="tg">PM</span><div><b>Night Shift Scalp Serum</b><p>Melatonin 0.1% + Niacinamide · mess-free roll-on · outside protection</p></div></div>
+      <div class="prodline"><span class="tg">AM</span><div><b>Inside Story supplement</b><p>Vit-D3 · Iron · Zinc · Biotin · B12 · inside recovery</p></div></div>
+      <div class="prodline"><span class="tg">BASE</span><div><b>Reset Scalp Wash</b><p>Sulfate-free, microbiome-safe · the entry + sampling hero</p></div></div>
+    </div>
+
+    <div class="icard">
+      <div class="ieb">Why we win vs the 12 indies</div>
+      <div class="wincheck"><span class="ck">✓</span>Proof, not promises — money-back 90-day system</div>
+      <div class="wincheck"><span class="ck">✓</span>Habit-designed — streaks, refills, Root Lab</div>
+      <div class="wincheck"><span class="ck">✓</span>Scalp-as-skin — facial-grade actives</div>
+      <div class="wincheck"><span class="ck">✓</span>India-tuned — climate + water matched</div>
+      <div class="wincheck"><span class="ck">✓</span>No formaldehyde-releasers — sensitive-safe</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ambient */
+(function(){var a=document.getElementById('ambient');for(var i=0;i<12;i++){var d=document.createElement('div');d.className='amb';var s=40+Math.random()*100;d.style.width=s+'px';d.style.height=s+'px';d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';d.style.animationDuration=(10+Math.random()*10)+'s';d.style.animationDelay=(-Math.random()*10)+'s';a.appendChild(d);}})();
+
+/* mesh */
+var MESH=(function(){var c=document.getElementById('mesh');var x=c.getContext('2d');var W=380,H=740,pts=[];
+function init(){pts=[];var n=Math.max(14,Math.round(W*H/13000));for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25});}
+function resize(w,h){W=Math.max(50,w);H=Math.max(50,h);c.width=W;c.height=H;init();}
+function draw(){x.clearRect(0,0,W,H);var i,j;for(i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;}
+for(i=0;i<pts.length;i++)for(j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){x.strokeStyle='rgba(217,184,167,'+(0.14*(1-d/110))+')';x.lineWidth=1;x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke();}}
+for(i=0;i<pts.length;i++){x.fillStyle='rgba(217,184,167,.35)';x.beginPath();x.arc(pts[i].x,pts[i].y,1.6,0,7);x.fill();}
+requestAnimationFrame(draw);}
+init();draw();return{resize:resize};})();
+
+/* device mode switch */
+function setMode(m){
+  document.body.className='mode-'+m;
+  ['phone','tablet','desktop'].forEach(function(k){var b=document.getElementById('sw-'+k);if(b)b.classList.remove('on');});
+  var on=document.getElementById('sw-'+m);if(on)on.classList.add('on');
+  setTimeout(resizeCanvases,80);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function resizeCanvases(){
+  var sc=document.querySelector('.screen');if(!sc)return;
+  var w=sc.clientWidth,h=sc.clientHeight;
+  MESH.resize(w,h);
+  var cf=document.getElementById('confetti');cf.width=w;cf.height=h;
+}
+window.addEventListener('resize',function(){clearTimeout(window._rz);window._rz=setTimeout(resizeCanvases,200);});
+
+/* nav */
+var views=['home','quiz','scan','result','rootlab','rewards','shop'];
+function go(id){
+  views.forEach(function(v){var e=document.getElementById('v-'+v);if(e)e.classList.remove('active');});
+  var t=document.getElementById('v-'+id);if(t)t.classList.add('active');
+  ['home','quiz','rootlab','rewards','shop'].forEach(function(v){var b=document.getElementById('t-'+v);if(b)b.classList.remove('on');});
+  var map={home:'home',quiz:'quiz',scan:'quiz',result:'quiz',rootlab:'rootlab',rewards:'rewards',shop:'shop'};
+  var b=document.getElementById('t-'+map[id]);if(b)b.classList.add('on');
+  var s=document.getElementById('scroll');if(s)s.scrollTop=0;
+  if(id==='rootlab')animateLab();
+  if(id==='rewards')animateRewards();
+}
+function startDiag(){qi=0;ans=[];renderQ();go('quiz');}
+
+/* quiz */
+var Q=[
+ {q:"Let's decode your roots.",s:"What's your scalp's main plot twist?",o:[{t:"More strands on my pillow lately",tag:"shed",ic:"leaf"},{t:"Dry, tight, flaky at the roots",tag:"barrier",ic:"drop"},{t:"Oily by afternoon",tag:"oil",ic:"drop"},{t:"Thinning — I want density",tag:"density",ic:"spark"}]},
+ {q:"How does your scalp feel between washes?",s:"Be honest with the roots.",o:[{t:"Oily root, dry ends",tag:"combo",ic:"drop"},{t:"Tight & dry all over",tag:"dry",ic:"drop"},{t:"Pretty balanced",tag:"normal",ic:"spark"},{t:"Sensitive — stings easily",tag:"sensitive",ic:"leaf"}]},
+ {q:"Your city's water is…",s:"We tune your system to it.",o:[{t:"Hard (Delhi/Blr/Hyd/Chennai)",tag:"hard",ic:"drop"},{t:"Soft / municipal (Mum/Kol)",tag:"soft",ic:"drop"},{t:"Honestly not sure",tag:"unknown",ic:"spark"}]},
+ {q:"How's life lately?",s:"Stress & sleep move the needle too.",o:[{t:"Stressed, ~5–6 hrs sleep",tag:"stress",ic:"moon"},{t:"Fairly balanced",tag:"calm",ic:"spark"},{t:"Big transition (exams/new city)",tag:"transition",ic:"leaf"}]},
+ {q:"Ready for your AI scan?",s:"We'll read your scalp in 5 signals.",o:[{t:"Scan my scalp now",tag:"scan",ic:"scan"}]}
+];
+var ICONS={
+ leaf:'<path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.6" stroke-linejoin="round"/>',
+ drop:'<path d="M12 4c3 4 5 6 5 9a5 5 0 01-10 0c0-3 2-5 5-9z" stroke="#5a4636" stroke-width="1.6" stroke-linejoin="round"/>',
+ spark:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" stroke="#5a4636" stroke-width="1.5" stroke-linejoin="round"/>',
+ moon:'<path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.6" stroke-linejoin="round"/>',
+ scan:'<rect x="4" y="4" width="16" height="16" rx="4" stroke="#5a4636" stroke-width="1.6"/><path d="M4 12h16" stroke="#5a4636" stroke-width="1.6"/>'
+};
+var qi=0,ans=[];
+function renderQ(){
+  var it=Q[qi];
+  document.getElementById('qnum').textContent=qi+1;
+  document.getElementById('qof').textContent=qi+1;
+  document.getElementById('qring').setAttribute('stroke-dashoffset',138-138*(qi/Q.length));
+  var h='<h2>'+it.q+'</h2><p class="qsub">'+it.s+'</p>';
+  it.o.forEach(function(op,i){h+='<div class="opt" onclick="pick('+i+',this)"><span class="oic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">'+ICONS[op.ic]+'</svg></span>'+op.t+'</div>';});
+  var b=document.getElementById('qbody');b.innerHTML=h;b.classList.remove('qcard');void b.offsetWidth;b.classList.add('qcard');
+}
+function pick(i,el){
+  document.querySelectorAll('#qbody .opt').forEach(function(o){o.classList.remove('sel');});
+  el.classList.add('sel');ans[qi]=Q[qi].o[i].tag;
+  document.getElementById('qring').setAttribute('stroke-dashoffset',138-138*((qi+1)/Q.length));
+  setTimeout(function(){if(qi<Q.length-1){qi++;renderQ();}else runScan();},300);
+}
+function runScan(){
+  go('scan');
+  var stage=document.getElementById('scanstage');
+  stage.querySelectorAll('.scandot').forEach(function(d){d.remove();});
+  for(var i=0;i<16;i++){var d=document.createElement('span');d.className='scandot';d.style.left=(10+Math.random()*80)+'%';d.style.bottom='0';d.style.animationDuration=(1.6+Math.random()*1.6)+'s';d.style.animationDelay=(-Math.random()*2)+'s';stage.appendChild(d);}
+  var items=document.querySelectorAll('#checkl .citem');
+  items.forEach(function(it){it.classList.remove('on');it.querySelector('.v').textContent='';});
+  items.forEach(function(it,idx){setTimeout(function(){it.classList.add('on');it.querySelector('.v').textContent=it.getAttribute('data-v');},550+idx*520);});
+  setTimeout(finishResult,550+items.length*520+650);
+}
+function finishResult(){
+  var title="THE ROOT REBEL",desc="You shed under pressure — humidity, hard water, late nights. Your roots don't need babying; they need a smarter system.",clim="Hard-water shield",i1="68",i2="High",i3="90d";
+  if(ans.indexOf('barrier')>-1||ans.indexOf('dry')>-1||ans.indexOf('sensitive')>-1){title="THE HYDRATION HERO";desc="Your barrier is thirsty and reactive. We rebuild it like skin — calm, sealed, resilient.";i1="41";i2="Med";}
+  else if(ans.indexOf('density')>-1){title="THE DENSITY SEEKER";desc="Early thinning + shedding. Melatonin PM + inside-recovery AM is your lane to visible density.";i1="59";i2="Med";}
+  else if(ans.indexOf('oil')>-1){title="THE SCALP STRATEGIST";desc="Sebum's in overdrive at the root. We exfoliate, rebalance the microbiome and keep it fresh.";i1="72";i2="High";}
+  else if(ans.indexOf('stress')>-1||ans.indexOf('transition')>-1){title="THE NIGHT REPAIRER";desc="Stress + short sleep are shedding triggers. Your melatonin PM ritual turns nights into repair time.";i1="63";i2="High";}
+  if(ans.indexOf('hard')>-1)clim="Hard-water shield (chelating pre-wash)";else if(ans.indexOf('soft')>-1)clim="Humidity anti-frizz seal";
+  document.getElementById('idname').textContent=title;document.getElementById('iddesc').textContent=desc;document.getElementById('climAdd').textContent=clim;
+  document.getElementById('i1').textContent=i1;document.getElementById('i2').textContent=i2;document.getElementById('i3').textContent=i3;
+  var reg=[{n:"Night Shift Scalp Serum",d:"Melatonin 0.1% + Niacinamide · PM",p:"₹699"},{n:"Inside Story supplement",d:"Vit-D3 · Iron · Zinc · Biotin · AM",p:"₹599"},{n:"Reset Scalp Wash",d:"Sulfate-free · microbiome-safe",p:"₹449"}];
+  var icon='<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18 14A7 7 0 019 5a7 7 0 109 9z" stroke="#5a4636" stroke-width="1.7" stroke-linejoin="round"/></svg>';
+  var html='';reg.forEach(function(r){html+='<div class="card regimen"><div class="pv">'+icon+'</div><div><h4>'+r.n+'</h4><p>'+r.d+'</p></div><div class="price">'+r.p+'</div></div>';});
+  document.getElementById('regimenList').innerHTML=html;go('result');
+}
+function animateLab(){
+  var sk=document.getElementById('labSkeleton'),ct=document.getElementById('labContent');
+  sk.classList.remove('hidden');ct.classList.add('hidden');
+  setTimeout(function(){sk.classList.add('hidden');ct.classList.remove('hidden');
+    document.getElementById('scoreRing').setAttribute('stroke-dashoffset',276-276*0.87);
+    var el=document.getElementById('rootScore');var n=0;var iv=setInterval(function(){n+=3;if(n>=87){n=87;clearInterval(iv);}el.textContent=n;},22);
+  },820);
+}
+var streakLit=false;
+function lightStreak(){if(streakLit)return;streakLit=true;var d=document.getElementById('todayDay');d.classList.add('on','pulse-now');d.querySelector('.fl').textContent='✦';document.getElementById('streakN').textContent='26';toast('🔥 26-day Root Streak · +20 Root Points');}
+function takePhoto(){var e=document.getElementById('emptyPhoto');e.innerHTML='<div class="big" style="color:#4c9a74">Photo captured ✓</div><p>+50 Root Points · #ProofInProgress unlocked</p><div style="display:flex;gap:8px;margin-top:6px"><div style="flex:1;height:80px;border-radius:16px;background:linear-gradient(160deg,#9a9088,#6f665e);display:flex;align-items:flex-end;justify-content:center;color:#fff;font-size:9px;padding:6px">Day 0</div><div style="flex:1;height:80px;border-radius:16px;background:var(--grad);display:flex;align-items:flex-end;justify-content:center;color:#5a4636;font-size:9px;padding:6px">Today</div></div>';celebrate();}
+function animateRewards(){setTimeout(function(){document.getElementById('lvbar').style.width='82%';},120);}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(function(){t.classList.remove('show');},2300);}
+function celebrate(){
+  var c=document.getElementById('confetti');var sc=document.querySelector('.screen');c.width=sc.clientWidth;c.height=sc.clientHeight;var x=c.getContext('2d');
+  var cols=['#D9B8A7','#EADDCB','#FF7D6A','#D7E4DD','#F5E8DE'];var ps=[];var cx=c.width/2;
+  for(var i=0;i<90;i++)ps.push({x:cx,y:c.height*0.4,vx:(Math.random()-.5)*9,vy:Math.random()*-11-3,g:.32,s:5+Math.random()*6,c:cols[i%cols.length],r:Math.random()*6,vr:(Math.random()-.5)*.4,a:1});
+  var t0=Date.now();
+  (function anim(){var el=Date.now()-t0;x.clearRect(0,0,c.width,c.height);ps.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.a=Math.max(0,1-el/1600);x.save();x.translate(p.x,p.y);x.rotate(p.r);x.globalAlpha=p.a;x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore();});if(el<1600)requestAnimationFrame(anim);else x.clearRect(0,0,c.width,c.height);})();
+}
+
+/* animate infographic bars when visible */
+function fillBars(){document.querySelectorAll('.track i[data-w]').forEach(function(el){el.style.width=el.getAttribute('data-w');});}
+
+/* init */
+renderQ();
+setMode('phone');
+setTimeout(function(){resizeCanvases();fillBars();},300);
+</script>
+</body>
+</html>
